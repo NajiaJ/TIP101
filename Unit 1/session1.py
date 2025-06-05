@@ -94,3 +94,54 @@ def get_last(lst):
         print("None")
 
 get_last([3,1,6,7,5])
+print('\n')
+
+# Problem 11
+def counter(stop):
+    for i in range (1, stop + 1):
+        print (i)
+
+counter(7)
+print('\n')
+
+# Problem 12
+def sum_ten():
+    total = 0;
+    for i in range(1,11):
+        total += i;
+    print(total)
+sum_ten()
+print('\n')
+
+# Problem 13
+def sum_positive_range(stop):
+    total = 0;
+    for i in range (1, stop + 1):
+        total += i
+    print(total)
+
+sum = sum_positive_range(6)
+print('\n')
+
+# Problem 14
+def sum_range(start, stop):
+    total = 0;
+    for i in range(start, stop + 1):
+        total += i
+    print(total)
+
+sum = sum_range(3, 9)
+print('\n')
+
+# Problem 15
+def print_negatives(lst):
+    has_negatives = False
+    for num in lst:
+        if num < 0:
+            print(num)
+            has_negatives = True
+    if not has_negatives:
+        print("None")
+
+print_negatives([3,-2,2,1,-5])
+print_negatives([1,2,3,4,5])
