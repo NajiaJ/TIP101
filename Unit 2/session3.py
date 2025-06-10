@@ -75,3 +75,103 @@ print(greater_sum)
 dictionary2 = {100:10, 200:20, 300:30, 400:40, 500:50, 600:60}
 greater_sum = keys_v_values(dictionary2)
 print(greater_sum)
+print('\n')
+
+# Problem 5
+def restock_inventory(current_inventory, restock_list):
+    for key,value in restock_list.items():
+        if key in current_inventory:
+            current_inventory[key] += value
+        else:
+            current_inventory[key] = value
+    
+    return current_inventory
+
+
+current_inventory = {
+    "apples": 30,
+    "bananas": 15,
+    "oranges": 10
+}
+
+restock_list = {
+    "oranges": 20,
+    "apples": 10,
+    "pears": 5
+}
+print(restock_inventory(current_inventory, restock_list))
+print('\n')
+
+# Problem 6
+def calculate_gpa(report_card):
+    #create dictionary report_card
+    report_card_values = {"A": 4, "B": 3, "C": 2, "D": 1, "F": 0}
+
+    #create gpa and classes counter
+    gpa = 0
+    classes = 0
+
+    #loop through report_card
+    for clas, grade in report_card.items():
+        #add the grade values from the report_card_values to the gpa
+        gpa += report_card_values[grade]
+        #increase the classes by 1
+        classes += 1
+
+    #divide by the total number of classes
+    gpa /= classes
+
+    return gpa
+
+report_card = {"Math": "A", "Science": "C", "History": "A", "Art": "B", "English": "B", "Spanish": "A"}
+print(calculate_gpa(report_card))
+print('\n')
+
+# Problem 7
+def highest_rated(books):
+    high_rating = books[0]
+
+    for book in books:
+            if book.get('rating') > high_rating.get('rating'):
+                high_rating = book
+    
+    return high_rating
+        
+
+books = [
+    {"title": "Tomorrow, and Tomorrow, and Tomorrow",
+     "author": "Gabrielle Zevin",
+     "rating": 4.18
+    },
+    {"title": "A Fortune For Your Disaster",
+     "author": "Hanif Abdurraqib",
+     "rating": 4.47
+    },
+    {"title": "The Seven Husbands of Evenlyn Hugo",
+     "author": "Taylor Jenkins Reid",
+     "rating": 4.40
+    }
+]
+print(highest_rated(books))
+print('\n')
+
+# Problem 8
+def index_to_value_map(lst):
+    # create a empty dictionary to return
+    dictionary = {}
+
+    # create counter for index
+    index = 0
+
+    # loop through lst
+    for items in lst:
+        # add new lst item to dictionary
+        dictionary[index] = items
+        # increase counter by 1
+        index += 1
+    
+    #return dictionary
+    return dictionary
+
+lst = ["apple", "banana", "cherry"]
+print(index_to_value_map(lst))
