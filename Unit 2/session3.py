@@ -175,3 +175,45 @@ def index_to_value_map(lst):
 
 lst = ["apple", "banana", "cherry"]
 print(index_to_value_map(lst))
+print('\n')
+
+# PROBLEM SET 2
+
+def is_monotonic(nums):
+    monotonic_inc = True
+    monotonic_dec = True
+
+    for num in range(len(nums) - 1):
+        if nums[num] > nums[num + 1]:
+            monotonic_inc = False
+        elif nums[num] <= nums[num + 1]:
+            monotonic_dec = False
+    
+    return monotonic_dec or monotonic_inc
+
+nums1 = [1,2,2,3,10]
+print(is_monotonic(nums1))
+
+nums2 = [12,9,8,3,1]
+print(is_monotonic(nums2))
+
+nums3 = [1,1,1]
+print(is_monotonic(nums3))
+
+nums4 = [1,9,8,3,5]
+print(is_monotonic(nums4))
+print('\n')
+
+# Problem 2
+def student_directory(student_names):
+    students = {}
+    student_index = 1
+
+    for student in student_names:
+        students[student] = student_index
+        student_index += 1
+    
+    return students
+
+student_names = ["Ada Lovelace", "Tu Youyou", "Mae Jemison", "Rajeshwari Chatterjee", "Alan Turing"]
+print(student_directory(student_names))
