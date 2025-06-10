@@ -217,3 +217,32 @@ def student_directory(student_names):
 
 student_names = ["Ada Lovelace", "Tu Youyou", "Mae Jemison", "Rajeshwari Chatterjee", "Alan Turing"]
 print(student_directory(student_names))
+print('\n')
+
+# Problem 3
+def get_description(info, keys):
+    for key in keys:
+	    print(info[key])
+    
+   
+info = {"name": "Tom", "age": "30", "occupation": "engineer"}
+#keys = ["name", "occupation", "salary"] #BUG IS HERE! there is no key value pair for salary and age isn't included here
+keys = ["name", "occupation", "age"] # corrected version!! replaced salary with age
+get_description(info, keys)
+print('\n')
+
+# Problem 4
+def sum_even_values(dictionary):
+    sum_even = 0
+
+    for letter, value in dictionary.items():
+        if value % 2 == 0:
+            sum_even += value
+    
+    return sum_even
+
+dictionary = {"a": 4, "b": 1, "c": 2, "d": 8, }
+print(sum_even_values(dictionary))
+print('\n')
+
+# Problem 5
