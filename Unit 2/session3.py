@@ -246,3 +246,92 @@ print(sum_even_values(dictionary))
 print('\n')
 
 # Problem 5
+def merge_catalogs(catalog1, catalog2):
+    for item, price in catalog2.items():
+            catalog1[item] = price
+    
+    return catalog1
+
+catalog1 = {"apple": 1.0, "banana": 0.5}
+catalog2 = {"banana": 0.75, "cherry": 1.25}
+print(merge_catalogs(catalog1, catalog2))
+print('\n')
+
+# Problem 6
+def get_items_to_restock(products, restock_threshold):
+    restock_list = []
+    for item, quantity in products.items():
+        if quantity < restock_threshold:
+            restock_list.append(item)
+    
+    return restock_list
+
+products = {"Product1": 10, "Product2": 2, "Product3": 5, "Product4": 3}
+restock_threshold = 5
+print(get_items_to_restock(products, restock_threshold))
+print('\n')
+
+# Problem 7
+def most_popular_genre(movies):
+    total_ratings = {}
+    rating_count = {}
+
+    for movie in movies:
+        genre = movie['genre']
+        rating = movie['rating']
+
+        if genre in total_ratings:
+            total_ratings[genre] += rating
+            rating_count[genre] += 1
+        else:
+            total_ratings[genre] = rating
+            rating_count[genre] = 1
+    
+    highest_avg = 0
+    best_genre = None
+
+    for genre in total_ratings:
+        avg = total_ratings[genre] / rating_count[genre]
+        if avg > highest_avg:
+            highest_avg = avg
+            best_genre = genre
+    
+    return best_genre
+
+movies = [
+    {"title": "Inception",
+     "genre": "Science Fiction",
+     "rating": 8.8
+    },
+    {"title": "The Matrix", 
+     "genre": "Science Fiction",
+     "rating": 8.7
+    },
+    {"title": "Pride and Prejudice", 
+     "genre": "Romance",
+     "rating": 7.8
+    },
+    {"title": "Sense and Sensibility", 
+     "genre": "Romance",
+     "rating": 7.7
+    }
+]
+
+print(most_popular_genre(movies))
+print('\n')
+
+# Problem 8
+def quality_control(product_scores, threshold):
+    pass_fail = {}
+
+    for product, quality in product_scores.items():
+        if quality >= threshold:
+            pass_fail[product] = "pass"
+        else:
+            pass_fail[product] = "fail"
+    
+    return pass_fail
+
+scores = {"x0123": 75, "x0124": 40, "x0125": 90, "x0126": 55}
+threshold = 60
+print(quality_control(scores, threshold))
