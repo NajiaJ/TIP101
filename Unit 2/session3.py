@@ -335,3 +335,178 @@ def quality_control(product_scores, threshold):
 scores = {"x0123": 75, "x0124": 40, "x0125": 90, "x0126": 55}
 threshold = 60
 print(quality_control(scores, threshold))
+print('\n')
+
+# PROBLEM SET 3
+
+def peak_index_in_mountain_list(lst):
+    highest_peak = lst[0]
+    index = 0
+
+    for peak in lst:
+        if peak > highest_peak:
+            highest_peak = peak
+            index += 1
+    
+    return index
+
+mountain_lst = [0,3,8,0]
+peak = peak_index_in_mountain_list(mountain_lst)
+print(peak)
+print('\n')
+
+# Problem 2
+def build_inventory(product_names, product_prices):
+    products = {}
+    for i in range(len(product_names)):
+        products[product_names[i]] = product_prices[i]
+
+    return products
+
+product_names = ["Apple", "Banana", "Orange"]
+product_prices = [0.99, 0.50, 0.75]
+print(build_inventory(product_names, product_prices))
+print('\n')
+
+# Problem 3
+def update_or_warn(records, item, update_value):
+    if item in records:
+        records[item] = update_value
+    else:
+        print(item + " does not exist!")
+
+records = {"apple": 1, "banana": 2, "orange": 3}
+update_or_warn(records, "banana", 5)
+update_or_warn(records, "grape", 4)
+print('\n')
+
+# Problem 4
+def attendance_rate(attendance_list):
+    student_present = 0
+    student_absent = 0
+    students = 0
+
+    for student, attendance in attendance_list.items():
+        if attendance == "Present":
+            student_present += 1
+        else:
+            student_absent += 1
+        students += 1
+    
+    avg_present = (student_present / students) * 100
+
+    return avg_present
+
+attendance_list = {
+    "Bluey": "Present", 
+    "Bingo": "Absent", 
+    "Snickers": "Present", 
+    "Winton": "Absent"
+}
+
+print(attendance_rate(attendance_list))
+print('\n')
+
+# Problem 5
+def average_book_ratings(book_ratings):
+    avg_book_rating = {}
+
+    for book, rates in book_ratings.items():
+        if rates:
+            avg_rating = sum(rates) / len(rates)
+        else:
+            avg_rating = 0
+        avg_book_rating[book] = avg_rating
+    
+    return avg_book_rating
+
+book_ratings = {
+    "The Great Gatsby": [4.5, 3.0, 5.0],
+    "To Kill a Mockingbird": [4.8, 5.0, 4.0, 4.9]
+}
+print(average_book_ratings(book_ratings))
+print('\n')
+
+# Problem 6
+def odd_keys_even_values(dictionary):
+    lst = []
+    for number, pair in dictionary.items():
+        if not number % 2 == 0 and pair % 2 == 0:
+            lst.append(number)
+
+    return lst
+
+dictionary = {1: 2, 2: 6, 3: 5, 4: 4, 5: 8}
+final_list = odd_keys_even_values(dictionary)
+print(final_list)
+print('\n')
+
+# Problem 7
+def team_with_best_average_score(games):
+    total_score = {}
+    team_count = {}
+
+    for game in games:
+        name = game['team_name']
+        score = game['score']
+
+        if name in total_score:
+            total_score[name] += score
+            team_count[name] += 1
+        else:
+            total_score[name] = score
+            team_count[name] = 1
+    
+    highest_avg = 0
+    best_team = None
+
+    for name in total_score:
+        avg = total_score[name] / team_count[name]
+        if avg > highest_avg:
+            highest_avg = avg
+            best_team = name
+    
+    return best_team
+
+games = [
+    {"team_name": "Lions",
+     "score": 23
+    },
+    {"team_name": "Tigers", 
+     "score": 30
+    },
+    {"team_name": "Lions", 
+     "score": 27
+    },
+    {"team_name": "Bears", 
+     "score": 20
+    },
+    {"team_name": "Tigers", 
+     "score": 24
+    },
+    {"team_name": "Bears", 
+     "score": 22
+    }
+]
+
+print(team_with_best_average_score(games))
+print('\n')
+
+# Problem 8
+
+def find_unique_items(list_a, list_b):
+    unique_item = {}
+
+    for item in list_a:
+        if item not in list_b:
+            unique_item[item] = True
+    
+    for item in list_b:
+        if item not in list_a:
+            unique_item[item] = False
+    
+    return unique_item
+
+list_a = ["apple", "banana", "carrot"]
+list_b = ["apple", "banana", "date"]
+print(find_unique_items(list_a, list_b))
