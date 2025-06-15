@@ -61,5 +61,4 @@ print(reverse_string(my_str))
 print('\n')
 
 # Problem 5
-def first_unique_char(my_str):
-    
+# def first_unique_char(my_str):
