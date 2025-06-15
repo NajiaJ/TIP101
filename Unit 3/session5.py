@@ -61,4 +61,59 @@ print(reverse_string(my_str))
 print('\n')
 
 # Problem 5
-# def first_unique_char(my_str):
+def first_unique_char(my_str):
+    char_count = {}
+
+    for char in my_str:
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
+
+    for letter, value in enumerate(my_str):
+        if char_count[value] == 1:
+            return letter
+
+    return -1
+
+my_str = "leetcode"
+print(first_unique_char(my_str))
+
+str2 = "loveleetcode"
+print(first_unique_char(str2))
+
+str3 = "aabb"
+print(first_unique_char(str3))
+print('\n')
+
+# Problem 6
+def min_distance(words, word1, word2):
+    index1 = -1
+    index2 = -1
+    min_dist = float('inf')
+
+    for i in range(len(words)):
+        if words[i] == word1:
+            index1 = i
+        elif words[i] == word2:
+            index2 = i
+        
+        if index1 != -1 and index2 != -1:
+            dist = abs(index1 - index2)
+            if dist < min_dist:
+                min_dist = dist
+
+    if min_dist == float('inf'):
+        return -1
+    else:
+        return min_dist
+
+words = ["the", "quick", "brown", "fox", "jumped", "the"]
+dist1 = min_distance(words, "quick", "jumped")
+dist2 = min_distance(words, "the", "jumped")
+print(dist1)
+print(dist2)
+
+words2 = ["code", "path", "code", "contribute",  "practice"]
+dist3 = min_distance(words2, "code", "practice")
+print(dist3)
