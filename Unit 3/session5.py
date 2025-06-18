@@ -11,8 +11,7 @@ print('\n')
 # Problem 2
 def swap_ends(my_str):
     swap_str = my_str[-1]
-    for index in range(1,len(my_str)-1):
-        swap_str += my_str[index]
+    swap_str += my_str[1:-1]
     swap_str += my_str[0]
 
     return swap_str
