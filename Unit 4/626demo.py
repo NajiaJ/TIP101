@@ -10,7 +10,6 @@ def valid_palindrome(s):
     left = 0
     right = len(s) - 1
     deletion = False # to check if we deleted a character
-    foundPalindrome = False
 
     # First loop : Looping through to see if we have from the left
     while left < right:
@@ -20,10 +19,11 @@ def valid_palindrome(s):
         elif not deletion: # if we made a choice to delete a character (not equal basically)
             deletion = True
             left += 1 # arbritrarily delete from left
-        if left >= right: # if the pointers have crossed over then the palindromes have been found
-            foundPalindrome = True
         else:
             break
+
+        if left >= right: # if the pointers have crossed over then the palindromes have been found
+            return True
 
     left = 0
     right = len(s) - 1
@@ -37,12 +37,13 @@ def valid_palindrome(s):
         elif not deletion: # if we made a choice to delete a character
             deletion = True
             right -= 1
-        if left >= right: # if the pointers have crossed over then the palindromes have been found
-            foundPalindrome = True
         else:
             return False
+        
+        if left >= right: # if the pointers have crossed over then the palindromes have been found
+            return True
     
-    return foundPalindrome
+    return True
 
 s = "accba"
 print(valid_palindrome(s))
