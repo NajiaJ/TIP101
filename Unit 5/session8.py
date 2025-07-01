@@ -91,3 +91,114 @@ print(charmeleon_list)
 
 charizard_list = get_evolutionary_line(charizard)
 print(charizard_list)
+
+############################################################################
+class Card():
+    def __init__(self, suit, rank, next = None):
+        self.suit = suit
+        self.rank = rank
+        self.next = next
+
+    def print_card(self):
+        print(f"{self.rank} of {self.suit}")
+    
+    def is_valid(self):
+        suits = ["Hearts", "Spades", "Clubs", "Diamonds"]
+        ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
+
+        if self.suit in suits and self.rank in ranks:
+            return True
+        else:
+            return False
+    
+    def get_value(self):
+        if self.rank.isdigit():
+            return int(self.rank)
+        
+        rank_values = {"Ace": 1, "Jack": 11, "Queen": 12, "King": 13}
+
+        return rank_values.get(self.rank, None)
+
+class Hand:
+    def __init__(self):
+        self.cards = []
+    
+    def add_card(self, card):
+        self.cards.append(card)
+    
+    def remove_card(self, card):
+        self.cards.remove(card)
+
+def sum_hand(hand):
+    total = 0
+
+    for card in hand.cards:
+        if card.is_valid():
+            total += card.get_value()
+        else:
+            return None
+    
+    return total
+
+def print_hand(starting_card):
+    order = []
+
+    current_card = starting_card
+
+    while current_card:
+        order.append(current_card)
+        current_card = current_card.next
+    
+    return order
+
+
+card = Card("Hearts", "Ace")
+card.print_card()
+
+my_card = Card("Hearts", "7")
+print(my_card.is_valid())
+
+second_draw = Card("Spades", "Joker")
+print(second_draw.is_valid())
+
+card = Card("Hearts", "7")
+print(card.get_value())
+
+card_two = Card("Spades", "Jack")
+print(card_two.get_value())
+
+card_one = Card("Hearts", "3")
+card_two = Card("Spades", "8")
+
+player1_hand = Hand()
+# cards = []
+
+player1_hand.add_card(card_one)
+# cards = [card_one]
+
+player1_hand.add_card(card_two)
+# cards = [card_one, card_two]
+
+player1_hand.remove_card(card_one)
+# cards = [card_two]
+
+card_one = Card("Hearts", "3")
+card_two = Card("Hearts", "Jack")
+card_three = Card("Spades", "3")
+
+hand = Hand()
+hand.add_card(card_one)
+hand.add_card(card_two)
+hand.add_card(card_three)
+
+sum = sum_hand(hand)
+print(sum)
+
+card_one = Card("Hearts", "3")
+card_two = Card("Hearts", "4")
+card_three = Card("Diamonds", "King")
+
+card_one.next = card_two
+card_two.next = card_three
+
+print_hand(card_one)
