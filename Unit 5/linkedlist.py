@@ -20,4 +20,4 @@ a.next.next = Node(6)
 current = a
 while current != None:
     print(current.value)
-    current = current.next
+    current = current.next # always move to the next to afterwards
