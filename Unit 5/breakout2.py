@@ -13,17 +13,17 @@ def get_tail(head):
         if current.next == None:
             return current.value
 
-def listify_first_n(head, n):
-	lst = []
+# def listify_first_n(head, n):
+# 	lst = []
     
-    current = head
-    count = 0
+#     current = head
+#     count = 0
     
-    while current.next and count <= n:
-        lst.append(current.value)
-        count += 1
+#     while current.next and count <= n:
+#         lst.append(current.value)
+#         count += 1
         
-    return lst
+#     return lst
 
 # node_1 = Node("Jigglypuff")
 # node_2 = Node("Wigglytuff")
