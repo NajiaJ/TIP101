@@ -21,8 +21,21 @@ def count_element(head, val):
     for number, count in frequent.items():
         if number == val:
             return count
-        
 
+# ANOTHER WAY OF DOING IT
+def count_element(head, val):
+    count = 0
+
+    current = head
+
+    while current:
+        if current.value == val:
+            count += 1
+    
+        current = current.next
+
+    return count
+        
 # head = Node(3, Node(1, Node(2, Node(1))))
 # print(count_element(head, 1))
 
@@ -55,4 +68,62 @@ def remove_tail(head):
 # print_list(head)
 
 def find_middle_element(head):
-	pass
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next # slow pointer moves 1
+        fast = fast.next.next # fast pointer moves 2
+
+    return slow.value
+
+# head = Node(1, Node(2, Node(3, Node(4)))) # linked list is even returns 2nd middle node
+# head = Node(1, Node(2, Node(3))) # linked list is odd returns middle node
+# print(find_middle_element(head))
+
+def is_palindrome(head):
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next # slow pointer moves 1
+        fast = fast.next.next # fast pointer moves 2
+    
+    prev = None
+    curr = slow
+
+    while curr:
+        new_node = curr.next
+        curr.next = prev
+        prev = curr
+        curr = new_node
+
+    first_half = head
+    second_half = prev
+
+    while second_half:
+        if first_half.value != second_half.value:
+            return False
+        first_half = first_half.next
+        second_half = second_half.next
+    
+    return True
+
+def reverse(head):
+    curr = head
+    prev = None
+
+    #basic way to reverse linked lists
+    while curr:
+        next = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next
+    
+    return prev
+
+# head = Node(1, Node(2, Node(3, Node(4))))
+# print_list(head)
+# head = reverse(head)
+# print_list(head)
+
