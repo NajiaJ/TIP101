@@ -127,3 +127,123 @@ def reverse(head):
 # head = reverse(head)
 # print_list(head)
 
+
+def find_max(head):
+    curr = head
+    max_node = head.value
+
+    while curr:
+        if curr.value > max_node:
+            max_node = curr.value
+        
+        curr = curr.next
+    
+    return max_node
+
+# head = Node(6, Node(8, Node(5, Node(7))))
+# print(find_max(head))
+
+def remove_by_value(head, val):
+    # Check if the list is empty
+    if head is None:
+        return head
+
+    # If the node to be removed is the head of the list
+    if head.value == val:
+        return head.next
+
+    # Initialize pointers
+    current = head.next
+    previous = head
+
+    # Traverse the list to find the node to remove
+    while current.next:
+        if current.value == val:
+            previous.next = current.next
+            return head
+        previous = current
+        current = current.next
+
+    # If no node was found with the value `val`, return the original head
+    return head
+
+# head = Node(1, Node(2, Node(3, Node(4))))
+# print_list(head)
+# remove_by_value(head, 3)
+# print_list(head)
+
+def middle_match(head, val):
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+    if slow.value == val:
+        return True
+
+    return False
+
+# head = Node(1, Node(2, Node(3)))
+# print(middle_match(head, 2))
+# head2 = Node(1, Node(2, Node(3, Node(4))))
+# print(middle_match(head2, 2))
+
+def get_loop_start(head):
+    if not head:
+        return None
+
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+        if slow == fast:
+            slow = head
+            while slow != fast:
+                slow = slow.next
+                fast = fast.next
+            return slow.value
+
+    return None
+
+# Create nodes
+node1 = Node(1)
+node2 = Node(2)
+node3 = Node(3)
+node4 = Node(4)
+
+# Link nodes
+node1.next = node2
+node2.next = node3
+node3.next = node4
+
+# Create cycle: point node4.next back to node2
+node4.next = node2
+
+head = node1
+
+print(get_loop_start(head))
+
+def count_critical_points(head):
+    curr = head.next
+    prev = head
+    crits = 0
+
+    while curr and curr.next:
+        next = curr.next
+        if curr.value < next.value and curr.value < prev.value:
+            crits += 1
+        elif curr.value > next.value and curr.value > prev.value:
+            crits += 1
+        
+        prev = curr
+        curr = next
+
+    return crits
+
+# head = Node(1, Node(2, Node(3, Node(3, Node(3, Node(5, Node(1, Node(3))))))))
+# print(count_critical_points(head))
