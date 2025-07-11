@@ -118,3 +118,73 @@ def add_two_numbers(head_a, head_b):
 # head_2 = Node(5, Node(6, Node(4)))
 # result = add_two_numbers(head, head_2)
 # print_list(result)
+
+def make_circular(head):
+    curr = head
+
+    while curr.next:
+        curr = curr.next
+    
+    curr.next = head
+    
+    return head
+
+# head = Node(1, Node(4, Node(3)))
+# print_list(head)
+# make_circular(head)
+
+def collect_cycle_nodes(head):
+    lst = []
+
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+        if slow == fast:
+            meeting_point = slow.next
+            curr = meeting_point
+            while True:
+                lst.append(curr.value)
+                curr = curr.next
+
+                if curr == meeting_point:
+                    break
+
+            break
+
+    return lst
+
+# node1 = Node("num1")
+# node2 = Node("num2")
+# node3 = Node("num3")
+# node4 = Node("num4")
+
+# node1.next = node2
+# node2.next = node3
+# node3.next = node4
+# node4.next = node2
+# lst = collect_cycle_nodes(node1)
+# print(lst)
+
+def delete_dupes(head):
+    curr = head
+
+    temp = Node(0)
+    temp.next = head
+
+    # this gets rid of dupes but not the actual instance
+    while curr and curr.next:
+        if curr.value == curr.next.value:
+            curr.next = curr.next.next
+        else:
+            curr = curr.next
+    
+    return temp.next
+
+head = Node(1, Node(2, Node(3, Node(3, Node(4, Node(5))))))
+print_list(head)
+result = delete_dupes(head)
+print_list(result)
