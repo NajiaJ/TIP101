@@ -34,3 +34,25 @@ def count_ones(lst):
 
 lst = [0, 0, 0, 0, 1, 1, 1]
 print(count_ones(lst))
+
+def binary_search(nums, target):
+    left = 0
+    right = len(nums) - 1
+
+    while left < right:
+        middle = (left + right) // 2
+
+        if nums[middle] == target:
+            return middle
+        elif nums[middle] < target:
+            left = middle + 1
+        else:
+            right = middle - 1
+        
+        return binary_search(nums, target)
+
+    return -1
+
+nums = [1, 3, 5, 7, 9, 11, 13, 15]
+target = 11
+print(binary_search(nums, target))
