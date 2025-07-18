@@ -35,6 +35,16 @@ def count_ones(lst):
 lst = [0, 0, 0, 0, 1, 1, 1]
 print(count_ones(lst))
 
+# Michelle's Version
+def count_ones(lst):
+    if lst == [] or lst == [0] or lst == [1]:
+        return 0
+    else:
+        return 1 + count_ones(lst[1:-1])
+
+lst = [0, 0, 0, 0, 1, 1, 1]
+print(count_ones(lst))
+
 def binary_search(nums, target):
     left = 0
     right = len(nums) - 1
