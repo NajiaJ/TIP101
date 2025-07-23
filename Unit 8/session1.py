@@ -109,15 +109,15 @@ def inorder_traversal(root):
     
     return nodes
 
-node1 = TreeNode(1)
-node2 = TreeNode(2)
-node3 = TreeNode(5)
-node4 = TreeNode(4)
-node5 = TreeNode(3)
-node1.left = node2
-node1.right = node3
-node2.left = node4
-node2.right = node5
+# node1 = TreeNode(1)
+# node2 = TreeNode(2)
+# node3 = TreeNode(5)
+# node4 = TreeNode(4)
+# node5 = TreeNode(3)
+# node1.left = node2
+# node1.right = node3
+# node2.left = node4
+# node2.right = node5
 #print(inorder_traversal(node1))
 
 def size(root):
@@ -163,3 +163,56 @@ def find_bst(root, value):
         return find(root.right, value)
 
 #print(find_bst(node1, 5))
+
+# Version 2
+
+root = TreeNode(10)
+root.left = TreeNode(2)
+root.right = TreeNode(5)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(4)
+
+def check_tree_product(root):
+    if root.left.val * root.right.val == root.val:
+        return True
+    
+    return False
+
+# print(check_tree_product(root))
+
+def check_tree_product_2(root):
+    if root == None:
+        return False
+
+    if root.left and root.right:
+        if root.left.val == root.val or root.right.val == root.val:
+            return False
+    
+    if root.left and root.right:
+        if root.left.val * root.right.val == root.val:
+            return True
+    
+    return False
+
+#print(check_tree_product_2(root))
+
+def right_most(root):
+    if root == None:
+        return curr.val
+
+    curr = root
+
+    while curr.right is not None:
+        curr = curr.right
+    
+    return curr.val
+
+#print(right_most(root))
+
+def right_most_recursively(root):
+    if root == None:
+        return root.val
+
+    return right_most(root.right)
+
+print(right_most_recursively(root))
