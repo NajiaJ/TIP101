@@ -88,37 +88,24 @@ def left_most_recursively(root):
 # print(left_most_recursively(node1))
 
 def inorder_traversal(root):
-    nodes = []
-    stack = []
+    list = []
 
-    if root.val is None: # empty list
-        return nodes
-
-    if root.left is None: # no left nodes
-        nodes.append(root.val)
-
-    curr = root
-
-    while curr or stack:
-        while curr:
-            stack.append(curr)
-            curr = curr.left
-        curr = stack.pop()
-        nodes.append(curr.val)
-        curr = curr.right
+    if root is None:
+        return list
     
-    return nodes
+    list.extend(inorder_traversal(root.left))
+    list.append(root.val)
+    list.extend(inorder_traversal(root.right))
 
-# node1 = TreeNode(1)
-# node2 = TreeNode(2)
-# node3 = TreeNode(5)
-# node4 = TreeNode(4)
-# node5 = TreeNode(3)
-# node1.left = node2
-# node1.right = node3
-# node2.left = node4
-# node2.right = node5
-#print(inorder_traversal(node1))
+    return list
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+root.right.right = TreeNode(6)
+print(inorder_traversal(root))
 
 def size(root):
     nodes = inorder_traversal(root)
@@ -166,11 +153,11 @@ def find_bst(root, value):
 
 # Version 2
 
-root = TreeNode(10)
-root.left = TreeNode(2)
-root.right = TreeNode(5)
-root.left.left = TreeNode(4)
-root.left.right = TreeNode(4)
+# root = TreeNode(10)
+# root.left = TreeNode(2)
+# root.right = TreeNode(5)
+# root.left.left = TreeNode(4)
+# root.left.right = TreeNode(4)
 
 def check_tree_product(root):
     if root.left.val * root.right.val == root.val:
@@ -209,10 +196,35 @@ def right_most(root):
 
 #print(right_most(root))
 
-def right_most_recursively(root):
-    if root == None:
-        return root.val
+def postorder_traversal(root):
+    list = []
 
-    return right_most(root.right)
+    if root is None: # empty list
+        return list
 
-print(right_most_recursively(root))
+    list.extend(postorder_traversal(root.left))
+    list.extend(postorder_traversal(root.right))
+    list.append(root.val)
+
+    return list
+
+# root = TreeNode(1)
+# root.left = TreeNode(2)
+# root.right = TreeNode(3)
+# root.left.left = TreeNode(4)
+# root.left.right = TreeNode(5)
+# root.right.right = TreeNode(6)
+#print(postorder_traversal(root))
+
+def preorder_traversal(root):
+    list = []
+    if root is None: # empty list
+        return list
+    
+    list.append(root.val)
+    list.extend(preorder_traversal(root.left))
+    list.extend(preorder_traversal(root.right))
+    
+    return list
+
+#print(preorder_traversal(root))
