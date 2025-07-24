@@ -65,3 +65,17 @@ def insert(root, key, value):
         root.right = insert(root.right, key, value)
     
     return root
+
+         
+def remove_bst(root, key):
+	# Locate the node to be removed
+	# If the node is a leaf node:
+		# Remove the node by redirecting the appropriate child reference of its parent to None
+	# If the node has one parent:
+		# Replace the node with its child, updating its parent's nodes child reference appropriately
+	# If the node has two children:
+		# Find the node's inorder successor (smallest node in right subtree)
+		# Swap the value of the node and its inorder successor
+		# Recursively remove the successor (which now has the current node's value)
+	# Return the root of the updated tree
+	pass
