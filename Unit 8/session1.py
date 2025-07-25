@@ -57,6 +57,22 @@ def left_most(root):
     
     return curr.val
 
+def left_most(root):
+    #base: root is none
+    #base: root.left is empty
+        #return
+    #recurse: return root = root.left
+    
+    if root == None:
+        return None
+    elif root.left == None:
+        return root.val
+    else:
+        return left_most(root.left)
+        
+root = TreeNode(1,TreeNode(2,TreeNode(4),TreeNode(3)),TreeNode(5))
+print(left_most(root))
+
 # node1 = TreeNode(1)
 # node2 = TreeNode(2)
 # node3 = TreeNode(5)
